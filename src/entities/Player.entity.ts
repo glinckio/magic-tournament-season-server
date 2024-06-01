@@ -5,7 +5,7 @@ import {
   OneToOne,
   JoinColumn,
 } from "typeorm";
-import { Deck } from "./Deck.entity";
+import { Deck } from "./deck.entity";
 
 @Entity()
 export class Player {

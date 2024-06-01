@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
-import { Player } from "./entities/Player.entity";
-import { Deck } from "./entities/Deck.entity";
-import { Card } from "./entities/Card.entity";
+import { Player } from "../entities/player.entity";
+import { Deck } from "../entities/deck.entity";
+import { Card } from "../entities/card.entity";
 
 const AppDataSource = new DataSource({
   type: "mysql",
@@ -13,7 +13,7 @@ const AppDataSource = new DataSource({
   synchronize: false,
   logging: false,
   entities: [Player, Deck, Card],
-  migrations: ["src/migrations/**/*.ts"],
+  migrations: ["migrations/**/*.ts"],
   subscribers: [],
 });
 

@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
-    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/data-source.ts",
-    "schema:synk": "npm run typeorm schema:synk -- -d ./src/data-source.ts",
-    "migration:show": "npm run typeorm migration:show -- -d ./src/data-source.ts",
-    "migration:generate": "npm run typeorm migration:generate -- -d ./src/data-source.ts",
+    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/db/data-source.ts",
+    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/db/data-source.ts",
+    "schema:synk": "npm run typeorm schema:synk -- -d ./src/db/data-source.ts",
+    "migration:show": "npm run typeorm migration:show -- -d ./src/db/data-source.ts",
+    "migration:generate": "npm run typeorm migration:generate -- -d ./src/db/data-source.ts",
     "migration:create": "npm run typeorm migration:generate"
   },
   "keywords": [],
