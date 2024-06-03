@@ -1,9 +1,9 @@
 import AppDataSource from "../db/data-source";
-import { AddCardRepository } from "../../../../data/protocols/db/add-card-repository";
+import { CardRepository } from "../../../../data/protocols/db/card-repository";
 import { Card } from "../db/entities/card.entity";
 import { AddCardModel } from "../../../../domain/usecases/add-card";
 
-export class AddCardTypeOrmRepository implements AddCardRepository {
+export class CardTypeOrmRepository implements CardRepository {
   async add(card: AddCardModel): Promise<Card> {
     const { cardId, name, image, colors, deck } = card;
     const cardRepository = AppDataSource.getRepository(Card);
@@ -16,6 +16,13 @@ export class AddCardTypeOrmRepository implements AddCardRepository {
     });
 
     return data;
+  }
+
+  async remove(id: number): Promise<null> {
+    const cardRepository = AppDataSource.getRepository(Card);
+    await cardRepository.delete({ id });
+
+    return null;
   }
 
   async isCardExistInDeck(card: AddCardModel): Promise<boolean> {
