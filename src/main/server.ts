@@ -10,6 +10,7 @@ import checkTokenOnRequest from "./middleware/check-jwt-token";
 import { makeRemoveCardController } from "./factories/remove-card/remove-card";
 import { makeUpdatePlayerController } from "./factories/update-player/update-player";
 import { makeDeletePlayerController } from "./factories/remove-player/remove-player";
+import { makeFindAllPlayersController } from "./factories/find-all-players/find-all-players";
 
 const app = express();
 const route = Router();
@@ -21,6 +22,11 @@ route.delete(
   "/card/:id",
   checkTokenOnRequest,
   adaptRoute(makeRemoveCardController())
+);
+route.get(
+  "/player",
+  checkTokenOnRequest,
+  adaptRoute(makeFindAllPlayersController())
 );
 route.put(
   "/player",

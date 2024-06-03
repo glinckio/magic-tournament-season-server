@@ -7,6 +7,12 @@ import { UpdatePlayerModel } from "../../../../domain/usecases/update-player";
 import { Card } from "../db/entities/card.entity";
 
 export class PlayerTypeOrmRepository implements PlayerRepository {
+  async findAll(): Promise<Player[]> {
+    const playerRepository = AppDataSource.getRepository(Player);
+    const data = await playerRepository.find();
+    return data;
+  }
+
   async add(player: AddPlayerModel): Promise<Player> {
     const { cpf, email, name, password } = player;
     const playerRepository = AppDataSource.getRepository(Player);
