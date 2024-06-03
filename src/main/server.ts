@@ -21,7 +21,11 @@ route.delete(
   checkTokenOnRequest,
   adaptRoute(makeRemoveCardController())
 );
-route.put("/player", adaptRoute(makeUpdatePlayerController()));
+route.put(
+  "/player",
+  checkTokenOnRequest,
+  adaptRoute(makeUpdatePlayerController())
+);
 
 app.use(express.json());
 app.use(route);
