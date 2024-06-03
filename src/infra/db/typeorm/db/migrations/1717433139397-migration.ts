@@ -1,12 +1,12 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Migration1717430258474 implements MigrationInterface {
-    name = 'Migration1717430258474'
+export class Migration1717433139397 implements MigrationInterface {
+    name = 'Migration1717433139397'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE \`card\` (\`id\` int NOT NULL AUTO_INCREMENT, \`cardId\` varchar(255) NOT NULL, \`name\` varchar(255) NOT NULL, \`image\` varchar(255) NOT NULL, \`colors\` varchar(255) NOT NULL, \`deckId\` int NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`);
         await queryRunner.query(`CREATE TABLE \`deck\` (\`id\` int NOT NULL AUTO_INCREMENT, \`title\` varchar(255) NOT NULL DEFAULT '', \`playerId\` int NULL, UNIQUE INDEX \`REL_fcd3a7bc021f6846ffe6e6fbfb\` (\`playerId\`), PRIMARY KEY (\`id\`)) ENGINE=InnoDB`);
-        await queryRunner.query(`CREATE TABLE \`player\` (\`id\` int NOT NULL AUTO_INCREMENT, \`name\` varchar(255) NOT NULL, \`cpf\` varchar(255) NOT NULL, \`email\` varchar(255) NOT NULL, \`password\` varchar(255) NOT NULL, \`deckId\` int NULL, UNIQUE INDEX \`REL_569cc8422548e3f94a22535b61\` (\`deckId\`), PRIMARY KEY (\`id\`)) ENGINE=InnoDB`);
+        await queryRunner.query(`CREATE TABLE \`player\` (\`id\` int NOT NULL AUTO_INCREMENT, \`name\` varchar(255) NOT NULL, \`cpf\` varchar(255) NOT NULL, \`email\` varchar(255) NOT NULL, \`password\` varchar(255) NOT NULL, \`role\` varchar(255) NOT NULL, \`deckId\` int NULL, UNIQUE INDEX \`REL_569cc8422548e3f94a22535b61\` (\`deckId\`), PRIMARY KEY (\`id\`)) ENGINE=InnoDB`);
         await queryRunner.query(`ALTER TABLE \`card\` ADD CONSTRAINT \`FK_673081effbabe22d74757339c60\` FOREIGN KEY (\`deckId\`) REFERENCES \`deck\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE \`deck\` ADD CONSTRAINT \`FK_fcd3a7bc021f6846ffe6e6fbfb7\` FOREIGN KEY (\`playerId\`) REFERENCES \`player\`(\`id\`) ON DELETE CASCADE ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE \`player\` ADD CONSTRAINT \`FK_569cc8422548e3f94a22535b615\` FOREIGN KEY (\`deckId\`) REFERENCES \`deck\`(\`id\`) ON DELETE CASCADE ON UPDATE NO ACTION`);

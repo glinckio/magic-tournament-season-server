@@ -5,6 +5,7 @@ export interface AddPlayerModel {
   cpf: string;
   email: string;
   password: string;
+  role?: string;
 }
 
 export interface AddPlayer {

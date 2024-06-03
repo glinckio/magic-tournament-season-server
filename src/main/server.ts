@@ -11,6 +11,7 @@ import { makeRemoveCardController } from "./factories/remove-card/remove-card";
 import { makeUpdatePlayerController } from "./factories/update-player/update-player";
 import { makeDeletePlayerController } from "./factories/remove-player/remove-player";
 import { makeFindAllPlayersController } from "./factories/find-all-players/find-all-players";
+import isAdmin from "./middleware/is-admin";
 
 const app = express();
 const route = Router();
@@ -26,6 +27,7 @@ route.delete(
 route.get(
   "/player",
   checkTokenOnRequest,
+  isAdmin,
   adaptRoute(makeFindAllPlayersController())
 );
 route.put(
@@ -36,6 +38,7 @@ route.put(
 route.delete(
   "/player/:id",
   checkTokenOnRequest,
+  isAdmin,
   adaptRoute(makeDeletePlayerController())
 );
 

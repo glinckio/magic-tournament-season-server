@@ -23,7 +23,7 @@ export class DbAuthentication implements Authentication {
         player.password
       );
       if (isValid) {
-        const accessToken = await this.encypter.encrypt(player.id);
+        const accessToken = await this.encypter.encrypt(player);
         return accessToken;
       }
     }

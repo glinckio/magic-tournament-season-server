@@ -13,12 +13,13 @@ export class UpdatePlayerController {
     try {
       const error = this.validation.validate(httpRequest.body);
       if (error) return badRequest(error);
-      const { id, name, cpf, email } = httpRequest.body;
+      const { id, name, cpf, email, role } = httpRequest.body;
       const data = await this.updatePlayer.update({
         id,
         name,
         email,
         cpf,
+        role,
       });
       return ok(data);
     } catch (error) {

@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import { NextFunction, Response, Request } from "express";
 import { JwtAdapter } from "../../infra/criptography/jwt-adapter/jwt-adapter";
 

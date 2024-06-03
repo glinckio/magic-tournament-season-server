@@ -5,8 +5,8 @@ import { Player } from "../../db/typeorm/db/entities/player.entity";
 export class JwtAdapter implements Encypter {
   constructor(private readonly secret: string) {}
 
-  async encrypt(value: number): Promise<string> {
-    const accessToken = await jwt.sign({ id: value }, this.secret);
+  async encrypt(player: Player): Promise<string> {
+    const accessToken = await jwt.sign(JSON.stringify(player), this.secret);
     return accessToken;
   }
 

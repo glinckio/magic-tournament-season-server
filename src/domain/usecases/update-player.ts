@@ -5,6 +5,7 @@ export interface UpdatePlayerModel {
   name: string;
   cpf: string;
   email: string;
+  role: string;
 }
 
 export interface UpdatePlayer {

@@ -5,6 +5,7 @@ import { Player } from "../db/entities/player.entity";
 import { Deck } from "../db/entities/deck.entity";
 import { UpdatePlayerModel } from "../../../../domain/usecases/update-player";
 import { Card } from "../db/entities/card.entity";
+import { Roles } from "../../../../domain/models/roles";
 
 export class PlayerTypeOrmRepository implements PlayerRepository {
   async findAll(): Promise<Player[]> {
@@ -14,7 +15,7 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
   }
 
   async add(player: AddPlayerModel): Promise<Player> {
-    const { cpf, email, name, password } = player;
+    const { cpf, email, name, password, role = Roles.PLAYER } = player;
     const playerRepository = AppDataSource.getRepository(Player);
     const deckRepository = AppDataSource.getRepository(Deck);
     const { id: deckId } = await deckRepository.save({});
@@ -22,6 +23,7 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
       cpf,
       email,
       name,
+      role,
       password,
       deck: {
         id: deckId,
@@ -39,13 +41,14 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
   }
 
   async update(player: UpdatePlayerModel): Promise<Player> {
-    const { id, cpf, email, name } = player;
+    const { id, cpf, email, name, role } = player;
     const playerRepository = AppDataSource.getRepository(Player);
     const data = await playerRepository.save({
       id,
       cpf,
       email,
       name,
+      role,
     });
 
     return data;
