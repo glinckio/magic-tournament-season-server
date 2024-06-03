@@ -6,13 +6,14 @@ import { makeSignUpController } from "./factories/signup/signup";
 import { makeLoginController } from "./factories/login/login";
 import { adaptRoute } from "./adapters/express-route-adapter";
 import { makeAddCardController } from "./factories/add-card/add-card";
+import checkTokenOnRequest from "./middleware/check-jwt-token";
 
 const app = express();
 const route = Router();
 
 route.post("/signup", adaptRoute(makeSignUpController()));
 route.post("/login", adaptRoute(makeLoginController()));
-route.post("/card", adaptRoute(makeAddCardController()));
+route.post("/card", checkTokenOnRequest, adaptRoute(makeAddCardController()));
 
 app.use(express.json());
 app.use(route);

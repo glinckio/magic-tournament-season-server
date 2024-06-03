@@ -17,4 +17,18 @@ export class AddCardTypeOrmRepository implements AddCardRepository {
 
     return data;
   }
+
+  async isCardExistInDeck(card: AddCardModel): Promise<boolean> {
+    const { cardId, deck } = card;
+    const cardRepository = AppDataSource.getRepository(Card);
+    const isCardExists = await cardRepository.findOne({
+      where: { cardId, deck: { id: deck.id } },
+    });
+
+    if (!isCardExists) {
+      return false;
+    }
+
+    return true;
+  }
 }
