@@ -24,7 +24,7 @@ export class Player {
   @Column({ nullable: false })
   password: string;
 
-  @OneToOne(() => Deck, { cascade: true })
+  @OneToOne(() => Deck, { cascade: true, eager: true, onDelete: "CASCADE" })
   @JoinColumn()
   deck: Deck;
 }

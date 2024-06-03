@@ -4,6 +4,7 @@ import { AddPlayerModel } from "../../../../domain/usecases/add-player";
 import { Player } from "../db/entities/player.entity";
 import { Deck } from "../db/entities/deck.entity";
 import { UpdatePlayerModel } from "../../../../domain/usecases/update-player";
+import { Card } from "../db/entities/card.entity";
 
 export class PlayerTypeOrmRepository implements PlayerRepository {
   async add(player: AddPlayerModel): Promise<Player> {
@@ -42,6 +43,21 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
     });
 
     return data;
+  }
+
+  async remove(id: number): Promise<null> {
+    const playerRepository = AppDataSource.getRepository(Player);
+    const cardRepository = AppDataSource.getRepository(Card);
+    const deckRepository = AppDataSource.getRepository(Deck);
+
+    const player = await playerRepository.findOneBy({ id });
+    const cards = await cardRepository.findBy({ deck: { id: player.deck.id } });
+    for (let i = 0; i < cards.length; i++) {
+      await cardRepository.delete({ id: cards[i].id });
+    }
+    await playerRepository.delete({ id: player.id });
+    await deckRepository.delete({ id: player.deck.id });
+    return null;
   }
 
   async findByCpf(cpf: string): Promise<Player> {

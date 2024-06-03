@@ -7,4 +7,5 @@ export interface PlayerRepository {
   update(player: UpdatePlayerModel): Promise<Player>;
   findByCpf(cpf: string): Promise<Player>;
   findByEmail(email: string): Promise<Player>;
+  remove(id: number): Promise<null>;
 }

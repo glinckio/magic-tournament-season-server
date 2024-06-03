@@ -23,7 +23,7 @@ export class Deck {
   @JoinColumn()
   cards: Card[];
 
-  @OneToOne(() => Player)
+  @OneToOne(() => Player, { onDelete: "CASCADE" })
   @JoinColumn()
   player: Player;
 }
