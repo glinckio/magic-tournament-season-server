@@ -3,8 +3,11 @@ import { Deck } from "./deck.entity";
 
 @Entity()
 export class Card {
-  @Column({ primary: true })
+  @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  cardId: string;
 
   @Column()
   name: string;

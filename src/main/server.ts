@@ -5,12 +5,14 @@ import AppDataSource from "../infra/db/typeorm/db/data-source";
 import { makeSignUpController } from "./factories/signup/signup";
 import { makeLoginController } from "./factories/login/login";
 import { adaptRoute } from "./adapters/express-route-adapter";
+import { makeAddCardController } from "./factories/add-card/add-card";
 
 const app = express();
 const route = Router();
 
 route.post("/signup", adaptRoute(makeSignUpController()));
 route.post("/login", adaptRoute(makeLoginController()));
+route.post("/card", adaptRoute(makeAddCardController()));
 
 app.use(express.json());
 app.use(route);

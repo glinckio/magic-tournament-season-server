@@ -20,6 +20,13 @@ export class PlayerTypeOrmRepository implements AddPlayerRepository {
       },
     });
 
+    await deckRepository.save({
+      id: deckId,
+      player: {
+        id: data.id,
+      },
+    });
+
     return data;
   }
 
