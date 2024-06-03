@@ -1,16 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Deck } from "./deck.entity";
 
 @Entity()
 export class Card {
-  @PrimaryGeneratedColumn()
+  @Column({ primary: true })
   id: number;
 
   @Column()
-  title: string;
+  name: string;
 
   @Column()
-  url: string;
+  image: string;
+
+  @Column()
+  colors: string;
 
   @ManyToOne(() => Deck, (deck) => deck.cards)
   deck: Deck;

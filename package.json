@@ -7,7 +7,7 @@
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:run": "npm run typeorm migration:run -- -d ./src/infra/db/typeorm/db/data-source.ts",
     "migration:revert": "npm run typeorm migration:revert -d ./src/infra/db/typeorm/db/data-source.ts",
-    "migration:generate": "npm run typeorm migration:generate -- -d ./src/infra/db/typeorm/db/data-source.ts"
+    "migration:generate": "npm run typeorm migration:generate -- -d ./src/infra/db/typeorm/db/data-source.ts ./src/infra/db/typeorm/db/migrations/migration"
   },
   "keywords": [],
   "author": "",
@@ -24,10 +24,8 @@
     "validator": "^13.12.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.4.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.13.0",
-    "eslint": "^9.4.0",
     "globals": "^15.3.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.5",

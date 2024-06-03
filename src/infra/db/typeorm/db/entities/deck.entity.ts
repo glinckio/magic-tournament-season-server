@@ -1,14 +1,29 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+} from "typeorm";
 import { Card } from "./card.entity";
+import { Player } from "./player.entity";
 
 @Entity()
 export class Deck {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: "" })
   title: string;
 
-  @OneToMany(() => Card, (card) => card.deck)
+  @OneToMany(() => Card, (card) => card.deck, {
+    cascade: true,
+  })
+  @JoinColumn()
   cards: Card[];
+
+  @OneToOne(() => Player)
+  @JoinColumn()
+  player: Player;
 }
