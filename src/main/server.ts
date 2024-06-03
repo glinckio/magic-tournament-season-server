@@ -8,6 +8,7 @@ import { adaptRoute } from "./adapters/express-route-adapter";
 import { makeAddCardController } from "./factories/add-card/add-card";
 import checkTokenOnRequest from "./middleware/check-jwt-token";
 import { makeRemoveCardController } from "./factories/remove-card/remove-card";
+import { makeUpdatePlayerController } from "./factories/update-player/update-player";
 
 const app = express();
 const route = Router();
@@ -20,6 +21,7 @@ route.delete(
   checkTokenOnRequest,
   adaptRoute(makeRemoveCardController())
 );
+route.put("/player", adaptRoute(makeUpdatePlayerController()));
 
 app.use(express.json());
 app.use(route);

@@ -3,6 +3,7 @@ import AppDataSource from "../db/data-source";
 import { AddPlayerModel } from "../../../../domain/usecases/add-player";
 import { Player } from "../db/entities/player.entity";
 import { Deck } from "../db/entities/deck.entity";
+import { UpdatePlayerModel } from "../../../../domain/usecases/update-player";
 
 export class PlayerTypeOrmRepository implements PlayerRepository {
   async add(player: AddPlayerModel): Promise<Player> {
@@ -25,6 +26,19 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
       player: {
         id: data.id,
       },
+    });
+
+    return data;
+  }
+
+  async update(player: UpdatePlayerModel): Promise<Player> {
+    const { id, cpf, email, name } = player;
+    const playerRepository = AppDataSource.getRepository(Player);
+    const data = await playerRepository.save({
+      id,
+      cpf,
+      email,
+      name,
     });
 
     return data;
