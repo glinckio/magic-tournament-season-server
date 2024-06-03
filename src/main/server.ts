@@ -12,6 +12,7 @@ import { makeUpdatePlayerController } from "./factories/update-player/update-pla
 import { makeDeletePlayerController } from "./factories/remove-player/remove-player";
 import { makeFindAllPlayersController } from "./factories/find-all-players/find-all-players";
 import isAdmin from "./middleware/is-admin";
+import { makeUpdateDeckController } from "./factories/update-deck/update-deck";
 
 const app = express();
 const route = Router();
@@ -41,6 +42,7 @@ route.delete(
   isAdmin,
   adaptRoute(makeDeletePlayerController())
 );
+route.put("/deck", checkTokenOnRequest, adaptRoute(makeUpdateDeckController()));
 
 app.use(express.json());
 app.use(route);
