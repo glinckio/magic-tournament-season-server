@@ -1,12 +1,12 @@
-import { AddPlayer } from "../../../domain/usecases/add-player";
-import { HttpRequest, HttpResponse } from "../../protocols/http";
-import { serverError, ok, badRequest } from "../../helpers/http/http-helper";
-import { Validation } from "../../protocols/validation";
+import { AddTournament } from "../../../domain/usecases/add-tournament";
+import { badRequest, ok, serverError } from "../../helpers/http/http-helper";
 import { Controller } from "../../protocols/controller";
+import { HttpRequest, HttpResponse } from "../../protocols/http";
+import { Validation } from "../../protocols/validation";
 
-export class SignUpController implements Controller {
+export class AddTournamentController implements Controller {
   constructor(
-    private readonly addPlayer: AddPlayer,
+    private readonly addTournament: AddTournament,
     private readonly validation: Validation
   ) {}
 
@@ -14,12 +14,10 @@ export class SignUpController implements Controller {
     try {
       const error = this.validation.validate(httpRequest.body);
       if (error) return badRequest(error);
-      const { name, cpf, email, password } = httpRequest.body;
-      const data = await this.addPlayer.add({
+      const { name, startsAt } = httpRequest.body;
+      const data = await this.addTournament.add({
         name,
-        email,
-        password,
-        cpf,
+        startsAt,
       });
       return ok(data);
     } catch (error) {

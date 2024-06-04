@@ -1,6 +1,6 @@
 import { AddPlayerModel } from "../../../domain/usecases/add-player";
 import { UpdatePlayerModel } from "../../../domain/usecases/update-player";
-import { Player } from "../../../infra/db/typeorm/db/entities/player.entity";
+import { Player } from "../../../infra/db/typeorm/db/entities/player-entity";
 
 export interface PlayerRepository {
   findAll(): Promise<Player[]>;

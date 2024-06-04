@@ -1,7 +1,8 @@
 import { DataSource } from "typeorm";
-import { Player } from "./entities/player.entity";
-import { Deck } from "./entities/deck.entity";
-import { Card } from "./entities/card.entity";
+import { Player } from "./entities/player-entity";
+import { Deck } from "./entities/deck-entity";
+import { Card } from "./entities/card-entity";
+import { Tournament } from "./entities/tournament-entity";
 import env from "../../../../config/env";
 
 const AppDataSource = new DataSource({
@@ -13,7 +14,7 @@ const AppDataSource = new DataSource({
   database: env.DB_NAME,
   synchronize: false,
   logging: false,
-  entities: [Player, Deck, Card],
+  entities: [Player, Deck, Card, Tournament],
   migrations: [__dirname + "/migrations/**/*.ts"],
   subscribers: [],
 });

@@ -2,7 +2,6 @@ import { DbUpdatePlayer } from "../../../data/usecases/update-player/update-play
 import { PlayerTypeOrmRepository } from "../../../infra/db/typeorm/player-repository/player";
 import { UpdatePlayerController } from "../../../presentation/controllers/update-player/update-player";
 import { Controller } from "../../../presentation/protocols/controller";
-import { PlayerValidatorDecorator } from "../../decorators/duplicated-user";
 import { makeUpdatePlayerValidation } from "./update-player-validation";
 
 export const makeUpdatePlayerController = (): Controller => {

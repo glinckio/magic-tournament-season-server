@@ -1,11 +1,12 @@
 import { FindAllPlayers } from "../../../domain/usecases/find-all-players";
 import { ok, serverError } from "../../helpers/http/http-helper";
-import { HttpRequest, HttpResponse } from "../../protocols/http";
+import { Controller } from "../../protocols/controller";
+import { HttpResponse } from "../../protocols/http";
 
-export class FindAllPlayersController {
+export class FindAllPlayersController implements Controller {
   constructor(private readonly findAllPlayers: FindAllPlayers) {}
 
-  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle(): Promise<HttpResponse> {
     try {
       const data = await this.findAllPlayers.findAll();
       return ok(data);

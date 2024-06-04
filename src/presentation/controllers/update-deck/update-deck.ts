@@ -1,9 +1,10 @@
 import { UpdateDeck } from "../../../domain/usecases/update-deck";
 import { badRequest, ok, serverError } from "../../helpers/http/http-helper";
+import { Controller } from "../../protocols/controller";
 import { HttpRequest, HttpResponse } from "../../protocols/http";
 import { Validation } from "../../protocols/validation";
 
-export class UpdateDeckController {
+export class UpdateDeckController implements Controller {
   constructor(
     private readonly updateDeck: UpdateDeck,
     private readonly validation: Validation

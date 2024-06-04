@@ -1,10 +1,10 @@
 import { PlayerRepository } from "../../../../data/protocols/db/player-repository";
 import AppDataSource from "../db/data-source";
 import { AddPlayerModel } from "../../../../domain/usecases/add-player";
-import { Player } from "../db/entities/player.entity";
-import { Deck } from "../db/entities/deck.entity";
+import { Player } from "../db/entities/player-entity";
+import { Deck } from "../db/entities/deck-entity";
 import { UpdatePlayerModel } from "../../../../domain/usecases/update-player";
-import { Card } from "../db/entities/card.entity";
+import { Card } from "../db/entities/card-entity";
 import { Roles } from "../../../../domain/models/roles";
 
 export class PlayerTypeOrmRepository implements PlayerRepository {

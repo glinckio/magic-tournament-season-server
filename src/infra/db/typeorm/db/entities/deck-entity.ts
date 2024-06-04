@@ -6,8 +6,8 @@ import {
   OneToMany,
   OneToOne,
 } from "typeorm";
-import { Card } from "./card.entity";
-import { Player } from "./player.entity";
+import { Card } from "./card-entity";
+import { Player } from "./player-entity";
 
 @Entity()
 export class Deck {

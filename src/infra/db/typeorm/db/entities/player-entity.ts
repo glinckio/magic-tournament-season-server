@@ -4,8 +4,10 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   JoinColumn,
+  OneToMany,
 } from "typeorm";
-import { Deck } from "./deck.entity";
+import { Deck } from "./deck-entity";
+import { Tournament } from "./tournament-entity";
 
 @Entity()
 export class Player {
@@ -30,4 +32,12 @@ export class Player {
   @OneToOne(() => Deck, { cascade: true, eager: true, onDelete: "CASCADE" })
   @JoinColumn()
   deck: Deck;
+
+  @OneToMany(() => Deck, (tournament) => tournament.player, {
+    cascade: true,
+    eager: true,
+    onDelete: "CASCADE",
+  })
+  @JoinColumn()
+  tournament: Tournament[];
 }

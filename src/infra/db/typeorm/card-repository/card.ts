@@ -1,6 +1,6 @@
 import AppDataSource from "../db/data-source";
 import { CardRepository } from "../../../../data/protocols/db/card-repository";
-import { Card } from "../db/entities/card.entity";
+import { Card } from "../db/entities/card-entity";
 import { AddCardModel } from "../../../../domain/usecases/add-card";
 
 export class CardTypeOrmRepository implements CardRepository {

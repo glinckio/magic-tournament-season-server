@@ -1,9 +1,10 @@
 import { UpdatePlayer } from "../../../domain/usecases/update-player";
 import { badRequest, ok, serverError } from "../../helpers/http/http-helper";
+import { Controller } from "../../protocols/controller";
 import { HttpRequest, HttpResponse } from "../../protocols/http";
 import { Validation } from "../../protocols/validation";
 
-export class UpdatePlayerController {
+export class UpdatePlayerController implements Controller {
   constructor(
     private readonly updatePlayer: UpdatePlayer,
     private readonly validation: Validation

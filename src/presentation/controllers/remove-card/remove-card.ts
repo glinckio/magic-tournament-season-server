@@ -1,8 +1,9 @@
 import { HttpRequest, HttpResponse } from "../../protocols/http";
 import { serverError, ok } from "../../helpers/http/http-helper";
 import { RemoveCard } from "../../../domain/usecases/remove-card";
+import { Controller } from "../../protocols/controller";
 
-export class RemoveCardController {
+export class RemoveCardController implements Controller {
   constructor(private readonly removeCard: RemoveCard) {}
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {

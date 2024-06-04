@@ -1,5 +1,5 @@
-import { Card } from "../../infra/db/typeorm/db/entities/card.entity";
-import { Deck } from "../../infra/db/typeorm/db/entities/deck.entity";
+import { Card } from "../../infra/db/typeorm/db/entities/card-entity";
+import { Deck } from "../../infra/db/typeorm/db/entities/deck-entity";
 
 export interface AddCardModel {
   cardId: string;
