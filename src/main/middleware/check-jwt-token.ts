@@ -1,7 +1,6 @@
 import { NextFunction, Response, Request } from "express";
 import { JwtAdapter } from "../../infra/criptography/jwt-adapter/jwt-adapter";
-
-const secretKey = "eusguri";
+import env from "../../config/env";
 
 const checkTokenOnRequest = async (
   req: Request,
@@ -14,7 +13,7 @@ const checkTokenOnRequest = async (
     return res.status(401).json({ message: "No token provided" });
   }
 
-  const jwt = new JwtAdapter(secretKey);
+  const jwt = new JwtAdapter(env.JWT_SECRET);
   const { error, decoded } = await jwt.verify(token.split(" ")[1]);
 
   if (error) {

@@ -1,3 +1,4 @@
+import env from "../../../config/env";
 import { DbAuthentication } from "../../../data/usecases/authentication/db-authentication";
 import { BcryptAdapter } from "../../../infra/criptography/bcrypt-adapter/bcrypt-adapter";
 import { JwtAdapter } from "../../../infra/criptography/jwt-adapter/jwt-adapter";
@@ -10,7 +11,7 @@ export const makeLoginController = (): Controller => {
   const salt = 12;
   const playerTypeOrmRepository = new PlayerTypeOrmRepository();
   const bcryptAdapter = new BcryptAdapter(salt);
-  const encyprt = new JwtAdapter("eusguri");
+  const encyprt = new JwtAdapter(env.JWT_SECRET);
   const authentication = new DbAuthentication(
     playerTypeOrmRepository,
     bcryptAdapter,
