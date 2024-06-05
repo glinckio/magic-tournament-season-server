@@ -6,6 +6,7 @@ import { Deck } from "../db/entities/deck-entity";
 import { UpdatePlayerModel } from "../../../../domain/usecases/update-player";
 import { Card } from "../db/entities/card-entity";
 import { Roles } from "../../../../domain/models/roles";
+import { TournamentPlayer } from "../db/entities/tournament-player-entity";
 
 export class PlayerTypeOrmRepository implements PlayerRepository {
   async findAll(): Promise<Player[]> {
@@ -58,14 +59,26 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
     const playerRepository = AppDataSource.getRepository(Player);
     const cardRepository = AppDataSource.getRepository(Card);
     const deckRepository = AppDataSource.getRepository(Deck);
+    const tournamentPlayerRepository =
+      AppDataSource.getRepository(TournamentPlayer);
+
+    console.log(id);
 
     const player = await playerRepository.findOneBy({ id });
     const cards = await cardRepository.findBy({ deck: { id: player.deck.id } });
     for (let i = 0; i < cards.length; i++) {
       await cardRepository.delete({ id: cards[i].id });
     }
+    const tournaments = await tournamentPlayerRepository.find({
+      where: { player: { id } },
+    });
+
+    for (let i = 0; i < tournaments.length; i++) {
+      await tournamentPlayerRepository.delete({ id: tournaments[i].id });
+    }
     await playerRepository.delete({ id: player.id });
     await deckRepository.delete({ id: player.deck.id });
+
     return null;
   }
 
