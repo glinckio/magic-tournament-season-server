@@ -5,4 +5,5 @@ export interface TournamentPlayerRepository {
   register(
     tournamentPlayer: AddTournamentPlayerModel
   ): Promise<TournamentPlayer>;
+  findAll(): Promise<TournamentPlayer[]>;
 }

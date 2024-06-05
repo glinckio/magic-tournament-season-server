@@ -22,4 +22,16 @@ export class TournamentPlayerTypeOrmRepository
     });
     return data;
   }
+
+  async findAll(): Promise<TournamentPlayer[]> {
+    const tournamentPlayerRepository =
+      AppDataSource.getRepository(TournamentPlayer);
+    const data = await tournamentPlayerRepository.find({
+      relations: {
+        player: true,
+        tournament: true,
+      },
+    });
+    return data;
+  }
 }
