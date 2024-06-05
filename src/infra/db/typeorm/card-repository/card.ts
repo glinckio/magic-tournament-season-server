@@ -4,6 +4,13 @@ import { Card } from "../db/entities/card-entity";
 import { AddCardModel } from "../../../../domain/usecases/add-card";
 
 export class CardTypeOrmRepository implements CardRepository {
+  async findById(id: number): Promise<Card> {
+    const cardRepository = AppDataSource.getRepository(Card);
+    const data = await cardRepository.findOneBy({ id });
+
+    return data;
+  }
+
   async add(card: AddCardModel): Promise<Card> {
     const { cardId, name, image, colors, deck } = card;
     const cardRepository = AppDataSource.getRepository(Card);
