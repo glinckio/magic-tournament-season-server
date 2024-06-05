@@ -26,5 +26,5 @@ export class Deck {
 
   @OneToOne(() => Player, { onDelete: "CASCADE" })
   @JoinColumn()
-  player: Player;
+  player?: Player;
 }

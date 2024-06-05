@@ -29,5 +29,5 @@ export class Player {
 
   @OneToOne(() => Deck, { cascade: true, eager: true, onDelete: "CASCADE" })
   @JoinColumn()
-  deck: Deck;
+  deck?: Deck;
 }
