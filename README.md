@@ -2,7 +2,7 @@
 
 This project is an example of using React, Jest, and React Testing Library to perform automated testing on React components.
 
-![image](https://github.com/gabrieljob/react-jest/assets/45143271/8362ec0b-28a8-4066-b9da-5184fd1a5f03)
+![image](https://github.com/gabrieljob/magic-tournament-season-server/assets/45143271/08764b96-5482-45d3-b26b-94c635e25423)
 
 ## Introduction
 This document serves as the documentation for a project created on GitHub, utilizing NodeJs with TypeORM, MySQL, TypeScript, implementing Clean Architecture, and adhering to SOLID principles. 
