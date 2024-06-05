@@ -1,11 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  JoinColumn,
-  ManyToOne,
-} from "typeorm";
-import { Player } from "./player-entity";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Tournament {
@@ -17,8 +10,4 @@ export class Tournament {
 
   @Column({ nullable: false })
   startsAt: string;
-
-  @ManyToOne(() => Player, (player) => player.tournament)
-  @JoinColumn()
-  players: Player;
 }

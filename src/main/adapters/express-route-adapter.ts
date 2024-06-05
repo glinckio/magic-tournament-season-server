@@ -4,10 +4,11 @@ import { HttpRequest } from "../../presentation/protocols/http";
 
 export const adaptRoute = (controller: Controller) => {
   return async (req: Request, res: Response) => {
-    const { body, params } = req;
+    const { body, params, query } = req;
     const httpRequest: HttpRequest = {
       params,
       body,
+      query,
     };
     const httpResponse = await controller.handle(httpRequest);
     if (httpResponse.statusCode === 200) {

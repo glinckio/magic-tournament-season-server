@@ -18,6 +18,7 @@ export class Deck {
   title: string;
 
   @OneToMany(() => Card, (card) => card.deck, {
+    eager: true,
     cascade: true,
   })
   @JoinColumn()
