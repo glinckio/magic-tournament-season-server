@@ -1,0 +1,13 @@
+import { DbRemoveTournamentPlayer } from "../../../data/usecases/remove-tournament-player/remove-tournament-player";
+import { TournamentPlayerTypeOrmRepository } from "../../../infra/db/typeorm/tournament-player/tournament-player";
+import { RemoveTournamentPlayerController } from "../../../presentation/controllers/remove-tournament-player/remove-tournament-player";
+import { Controller } from "../../../presentation/protocols/controller";
+
+export const makeRemoveTournamentPlayersController = (): Controller => {
+  const tournamentPlayerTypeOrmRepository =
+    new TournamentPlayerTypeOrmRepository();
+  const removePlayer = new DbRemoveTournamentPlayer(
+    tournamentPlayerTypeOrmRepository
+  );
+  return new RemoveTournamentPlayerController(removePlayer);
+};

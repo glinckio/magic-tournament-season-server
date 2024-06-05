@@ -1,6 +1,8 @@
 import { TournamentPlayerRepository } from "../../../../data/protocols/db/tournament-player-repository";
 import { AddTournamentPlayerModel } from "../../../../domain/usecases/add-tournament-player";
 import AppDataSource from "../db/data-source";
+import { Player } from "../db/entities/player-entity";
+import { Tournament } from "../db/entities/tournament-entity";
 import { TournamentPlayer } from "../db/entities/tournament-player-entity";
 
 export class TournamentPlayerTypeOrmRepository
@@ -33,5 +35,12 @@ export class TournamentPlayerTypeOrmRepository
       },
     });
     return data;
+  }
+
+  async remove(id: number): Promise<null> {
+    const tournamentPlayerRepository =
+      AppDataSource.getRepository(TournamentPlayer);
+    await tournamentPlayerRepository.delete({ id });
+    return null;
   }
 }

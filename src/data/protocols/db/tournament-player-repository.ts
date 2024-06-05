@@ -6,4 +6,5 @@ export interface TournamentPlayerRepository {
     tournamentPlayer: AddTournamentPlayerModel
   ): Promise<TournamentPlayer>;
   findAll(): Promise<TournamentPlayer[]>;
+  remove(id: number): Promise<null>;
 }
