@@ -13,7 +13,7 @@ export class NotExistingCardValidator implements Controller {
     const { id } = httpRequest.body;
     const isCardExists = await this.cardTypeOrmRepository.findById(id);
 
-    if (isCardExists) {
+    if (!isCardExists) {
       return dataNotFound("Card");
     }
 

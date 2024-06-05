@@ -10,14 +10,25 @@ export class TournamentTypeOrmRepository implements TournamentRepository {
     const data = await tournamentRepository.save({ name, startsAt });
     return data;
   }
+  async findById(id: number): Promise<Tournament> {
+    const tournamentRepository = AppDataSource.getRepository(Tournament);
+    const data = await tournamentRepository.findOneBy({ id });
+    return data;
+  }
   async findAll(): Promise<Tournament[]> {
     const tournamentRepository = AppDataSource.getRepository(Tournament);
     const data = await tournamentRepository.find();
     return data;
   }
   async findByName(name: string): Promise<Tournament> {
-    const playerRepository = AppDataSource.getRepository(Tournament);
-    const data = await playerRepository.findOneBy({ name });
+    const tournamentRepository = AppDataSource.getRepository(Tournament);
+    const data = await tournamentRepository.findOneBy({ name });
     return data;
+  }
+  async remove(id: number): Promise<null> {
+    const tournamentRepository = AppDataSource.getRepository(Tournament);
+    await tournamentRepository.delete({ id });
+
+    return null;
   }
 }

@@ -13,7 +13,7 @@ export class NotExistingPlayerValidator implements Controller {
     const { cpf } = httpRequest.body;
     const isPlayerExists = await this.playerTypeOrmRepository.findByCpf(cpf);
 
-    if (isPlayerExists) {
+    if (!isPlayerExists) {
       return dataNotFound("Player");
     }
 
