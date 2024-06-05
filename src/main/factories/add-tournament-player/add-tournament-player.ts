@@ -1,4 +1,4 @@
-import { TournamentPlayerTypeOrmRepository } from "../../../infra/db/typeorm/tournament-player/tournament-player";
+import { TournamentPlayerTypeOrmRepository } from "../../../infra/db/typeorm/tournament-player-repository/tournament-player";
 import { AddTournamentPlayerController } from "../../../presentation/controllers/add-tournament-player/add-tournament-player";
 import { Controller } from "../../../presentation/protocols/controller";
 
