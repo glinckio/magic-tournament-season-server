@@ -25,9 +25,6 @@ export class LoginController implements Controller {
       if (accessToken === null) {
         return badRequest(new DataNotFound("Player"));
       }
-      if (!accessToken) {
-        return unauthorized();
-      }
       return ok({ accessToken });
     } catch (error) {
       console.log(error);
