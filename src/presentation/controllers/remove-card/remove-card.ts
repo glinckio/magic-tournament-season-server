@@ -12,7 +12,6 @@ export class RemoveCardController implements Controller {
       await this.removeCard.remove(id);
       return ok(null);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }

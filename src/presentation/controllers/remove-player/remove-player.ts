@@ -12,7 +12,6 @@ export class RemovePlayerController implements Controller {
       await this.removePlayer.remove(id);
       return ok(null);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }

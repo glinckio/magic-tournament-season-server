@@ -11,7 +11,6 @@ export class FindAllTournamentsController implements Controller {
       const data = await this.findAllTournaments.findAll();
       return ok(data);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }

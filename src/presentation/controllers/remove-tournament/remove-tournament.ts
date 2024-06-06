@@ -12,7 +12,6 @@ export class RemoveTournamentController implements Controller {
       await this.removeTournament.remove(id);
       return ok(null);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }

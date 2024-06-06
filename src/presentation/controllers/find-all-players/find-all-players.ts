@@ -11,7 +11,6 @@ export class FindAllPlayersController implements Controller {
       const data = await this.findAllPlayers.findAll();
       return ok(data);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }

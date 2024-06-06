@@ -13,7 +13,6 @@ export class FindAllTournamentPlayersController implements Controller {
       const data = await this.findAllTournamentPlayer.findAll();
       return ok(data);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }

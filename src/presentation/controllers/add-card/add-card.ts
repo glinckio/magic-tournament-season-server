@@ -24,7 +24,6 @@ export class AddCardController implements Controller {
       });
       return ok(data);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }

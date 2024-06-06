@@ -18,7 +18,6 @@ export class UpdateDeckController implements Controller {
       const data = await this.updateDeck.update({ id, title, player });
       return ok(data);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }
