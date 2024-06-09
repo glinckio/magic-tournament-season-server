@@ -1,5 +1,5 @@
-import { Deck } from "../../infra/db/typeorm/db/entities/deck.entity";
-import { Player } from "../../infra/db/typeorm/db/entities/player.entity";
+import { Deck } from "../../infra/db/typeorm/db/entities/deck-entity";
+import { Player } from "../../infra/db/typeorm/db/entities/player-entity";
 
 export interface UpdateDeckModel {
   id: number;
@@ -8,5 +8,5 @@ export interface UpdateDeckModel {
 }
 
 export interface UpdateDeck {
-  update(player: UpdateDeckModel): Promise<Deck>;
+  update(deck: UpdateDeckModel): Promise<Deck>;
 }
