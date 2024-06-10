@@ -69,8 +69,8 @@ const makeSut = (): SutTypes => {
   };
 };
 
-describe("DDbAddCard", () => {
-  it("Should call DbAddCard with correct values", async () => {
+describe("DbAddCard", () => {
+  it("should call DbAddCard with correct values", async () => {
     const { sut, cardRepository } = makeSut();
     const addSpy = jest.spyOn(cardRepository, "add");
 
@@ -87,7 +87,7 @@ describe("DDbAddCard", () => {
       },
     });
   });
-  it("Should throws of DbAddCard throws", async () => {
+  it("should throws of DbAddCard throws", async () => {
     const { cardRepository, sut } = makeSut();
     jest
       .spyOn(cardRepository, "add")
@@ -98,7 +98,7 @@ describe("DDbAddCard", () => {
     const promise = sut.add(makeFakeCardData());
     await expect(promise).rejects.toThrow();
   });
-  it("Should return an account on success", async () => {
+  it("should return an account on success", async () => {
     const { sut } = makeSut();
 
     const account = await sut.add(makeFakeCardData());
