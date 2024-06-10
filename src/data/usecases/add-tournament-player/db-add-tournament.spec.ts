@@ -4,6 +4,7 @@ import {
   AddTournamentPlayerModel,
 } from "../../../domain/usecases/add-tournament-player";
 import { TournamentPlayer } from "../../../infra/db/typeorm/db/entities/tournament-player-entity";
+import { TournamentPlayerRepository } from "../../protocols/db/tournament-player-repository";
 import { DbAddTournamentPlayer } from "./db-add-tournament-player";
 
 const makeFakeTournamentPlayer = (): TournamentPlayerModel => ({
@@ -23,8 +24,14 @@ const makeFakeTournamentPlayer = (): TournamentPlayerModel => ({
   },
 });
 
-const makeTournamentPlayerRepository = (): AddTournamentPlayer => {
-  class DbAddTournamentPlayer implements AddTournamentPlayer {
+const makeTournamentPlayerRepository = (): TournamentPlayerRepository => {
+  class DbAddTournamentPlayer implements TournamentPlayerRepository {
+    findAll(): Promise<TournamentPlayer[]> {
+      throw new Error("Method not implemented.");
+    }
+    remove(id: number): Promise<null> {
+      throw new Error("Method not implemented.");
+    }
     register(
       tournamentPlayer: AddTournamentPlayerModel
     ): Promise<TournamentPlayer> {
