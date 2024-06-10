@@ -1,5 +1,5 @@
 import { AddPlayer, AddPlayerModel } from "../../../domain/usecases/add-player";
-import { Player } from "../../../infra/db/typeorm/db/entities/player.entity";
+import { Player } from "../../../infra/db/typeorm/db/entities/player-entity";
 import { Hasher } from "../../protocols/criptography/hasher";
 import { PlayerRepository } from "../../protocols/db/player-repository";
 
