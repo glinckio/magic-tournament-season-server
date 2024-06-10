@@ -1,4 +1,4 @@
-import { DbFindAllPlayers } from "../../../data/usecases/find-all-players/find-all-players";
+import { DbFindAllPlayers } from "../../../data/usecases/find-all-players/db-find-all-players";
 import { PlayerTypeOrmRepository } from "../../../infra/db/typeorm/player-repository/player";
 import { FindAllPlayersController } from "../../../presentation/controllers/find-all-players/find-all-players";
 import { Controller } from "../../../presentation/protocols/controller";
