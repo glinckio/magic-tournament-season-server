@@ -77,14 +77,14 @@ const makeFakePlayerData = (): AddPlayerModel => ({
 });
 
 describe("DDbAddPlayer", () => {
-  it("Should call Hasher with correct password", async () => {
+  it("should call Hasher with correct password", async () => {
     const { hashStub, sut } = makeSut();
     const hashSpy = jest.spyOn(hashStub, "hash");
 
     await sut.add(makeFakePlayerData());
     expect(hashSpy).toHaveBeenCalledWith("valid_password");
   });
-  it("Should throws of Hasher throws", async () => {
+  it("should throws of Hasher throws", async () => {
     const { hashStub, sut } = makeSut();
     jest
       .spyOn(hashStub, "hash")
@@ -95,7 +95,7 @@ describe("DDbAddPlayer", () => {
     const promise = sut.add(makeFakePlayerData());
     await expect(promise).rejects.toThrow();
   });
-  it("Should call DbAddPlayer with correct values", async () => {
+  it("should call DbAddPlayer with correct values", async () => {
     const { sut, playerRepository } = makeSut();
     const addSpy = jest.spyOn(playerRepository, "add");
 
@@ -107,7 +107,7 @@ describe("DDbAddPlayer", () => {
       password: "hashed_password",
     });
   });
-  it("Should throws of DbAddPlayer throws", async () => {
+  it("should throws of DbAddPlayer throws", async () => {
     const { playerRepository, sut } = makeSut();
     jest
       .spyOn(playerRepository, "add")
@@ -118,7 +118,7 @@ describe("DDbAddPlayer", () => {
     const promise = sut.add(makeFakePlayerData());
     await expect(promise).rejects.toThrow();
   });
-  it("Should return an account on success", async () => {
+  it("should return an account on success", async () => {
     const { sut } = makeSut();
 
     const account = await sut.add(makeFakePlayerData());
