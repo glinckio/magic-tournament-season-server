@@ -76,7 +76,7 @@ const makeFakePlayerData = (): AddPlayerModel => ({
   password: "valid_password",
 });
 
-describe("DBDbAddPlayer", () => {
+describe("DDbAddPlayer", () => {
   it("Should call Hasher with correct password", async () => {
     const { hashStub, sut } = makeSut();
     const hashSpy = jest.spyOn(hashStub, "hash");
