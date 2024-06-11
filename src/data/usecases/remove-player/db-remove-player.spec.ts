@@ -23,7 +23,7 @@ const makePlayerRepository = (): PlayerRepository => {
       throw new Error("Method not implemented.");
     }
     remove(id: number): Promise<null> {
-      throw new Error("Method not implemented.");
+      return new Promise((resolve) => resolve(null));
     }
   }
 
