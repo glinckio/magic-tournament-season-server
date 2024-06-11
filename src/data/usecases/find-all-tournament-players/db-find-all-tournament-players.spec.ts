@@ -23,7 +23,7 @@ const makeFakeTournamentPlayer = (): TournamentPlayerModel[] => [
   },
 ];
 
-const makePlayerRepository = (): TournamentPlayerRepository => {
+const makeTournamentPlayerRepository = (): TournamentPlayerRepository => {
   class DbAddPlayerStub implements TournamentPlayerRepository {
     register(
       tournamentPlayer: AddTournamentPlayerModel
@@ -47,7 +47,7 @@ interface SutTypes {
 }
 
 const makeSut = (): SutTypes => {
-  const tournamentPlayerRepository = makePlayerRepository();
+  const tournamentPlayerRepository = makeTournamentPlayerRepository();
   const sut = new DbFindAllTournamentPlayer(tournamentPlayerRepository);
 
   return {
