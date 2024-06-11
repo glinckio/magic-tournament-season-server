@@ -29,7 +29,7 @@ const makeTournamentRepository = (): TournamentRepository => {
       throw new Error("Method not implemented.");
     }
     findAll(): Promise<Tournament[]> {
-      throw new Error("Method not implemented.");
+      return new Promise((resolve) => resolve(makeFakeTournaments()));
     }
     remove(id: number): Promise<null> {
       throw new Error("Method not implemented.");
