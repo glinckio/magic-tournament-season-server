@@ -2,7 +2,7 @@ import { FindAllTournamentPlayers } from "../../../domain/usecases/find-all-tour
 import { TournamentPlayer } from "../../../infra/db/typeorm/db/entities/tournament-player-entity";
 import { TournamentPlayerRepository } from "../../protocols/db/tournament-player-repository";
 
-export class DbFindAllTournamentPlayers implements FindAllTournamentPlayers {
+export class DbFindAllTournamentPlayer implements FindAllTournamentPlayers {
   constructor(
     private readonly tournamentPlayerRepository: TournamentPlayerRepository
   ) {}
