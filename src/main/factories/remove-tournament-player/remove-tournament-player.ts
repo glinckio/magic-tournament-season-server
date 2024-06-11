@@ -1,4 +1,4 @@
-import { DbRemoveTournamentPlayer } from "../../../data/usecases/remove-tournament-player/remove-tournament-player";
+import { DbRemoveTournamentPlayer } from "../../../data/usecases/remove-tournament-player/db-remove-tournament-player";
 import { TournamentPlayerTypeOrmRepository } from "../../../infra/db/typeorm/tournament-player-repository/tournament-player";
 import { RemoveTournamentPlayerController } from "../../../presentation/controllers/remove-tournament-player/remove-tournament-player";
 import { Controller } from "../../../presentation/protocols/controller";
