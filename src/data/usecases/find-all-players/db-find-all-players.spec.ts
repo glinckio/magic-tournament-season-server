@@ -2,8 +2,6 @@ import { PlayerModel } from "../../../domain/models/player";
 import { AddPlayerModel } from "../../../domain/usecases/add-player";
 import { UpdatePlayerModel } from "../../../domain/usecases/update-player";
 import { Player } from "../../../infra/db/typeorm/db/entities/player-entity";
-import { HttpRequest } from "../../../presentation/protocols/http";
-import { Hasher } from "../../protocols/criptography/hasher";
 import { PlayerRepository } from "../../protocols/db/player-repository";
 import { DbFindAllPlayers } from "./db-find-all-players";
 

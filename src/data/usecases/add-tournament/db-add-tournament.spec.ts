@@ -2,7 +2,7 @@ import { TournamentModel } from "../../../domain/models/tourmanent";
 import { AddTournamentModel } from "../../../domain/usecases/add-tournament";
 import { Tournament } from "../../../infra/db/typeorm/db/entities/tournament-entity";
 import { TournamentRepository } from "../../protocols/db/tournament-repository";
-import { DbAddTournament } from "./db-add-add-tournament";
+import { DbAddTournament } from "./db-add-tournament";
 
 const makeFakeTournament = (): TournamentModel => ({
   id: 1,
