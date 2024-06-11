@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { Encypter } from "../../../data/protocols/criptography/encypter";
-import { Player } from "../../db/typeorm/db/entities/player.entity";
+import { Player } from "../../db/typeorm/db/entities/player-entity";
 
 export class JwtAdapter implements Encypter {
   constructor(private readonly secret: string) {}

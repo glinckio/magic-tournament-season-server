@@ -62,8 +62,6 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
     const tournamentPlayerRepository =
       AppDataSource.getRepository(TournamentPlayer);
 
-    console.log(id);
-
     const player = await playerRepository.findOneBy({ id });
     const cards = await cardRepository.findBy({ deck: { id: player.deck.id } });
     for (let i = 0; i < cards.length; i++) {

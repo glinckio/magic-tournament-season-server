@@ -1,4 +1,4 @@
-import { TournamentPlayersModel } from "../../../domain/models/tournament-player";
+import { TournamentPlayerModel } from "../../../domain/models/tournament-player";
 import {
   AddTournamentPlayer,
   AddTournamentPlayerModel,
@@ -12,7 +12,7 @@ const makeAddTournamentPlayer = (): AddTournamentPlayer => {
   class AddTournamentPlayerStub implements AddTournamentPlayer {
     async register(
       tournamentPlayer: AddTournamentPlayerModel
-    ): Promise<TournamentPlayersModel> {
+    ): Promise<TournamentPlayerModel> {
       const fakeTournamentPlayer = makeFakeTournamentPlayer();
 
       return new Promise((resolve) => resolve(fakeTournamentPlayer));
@@ -22,7 +22,7 @@ const makeAddTournamentPlayer = (): AddTournamentPlayer => {
   return new AddTournamentPlayerStub();
 };
 
-const makeFakeTournamentPlayer = (): TournamentPlayersModel => ({
+const makeFakeTournamentPlayer = (): TournamentPlayerModel => ({
   id: 1,
   player: {
     id: 1,

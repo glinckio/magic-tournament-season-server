@@ -1,10 +1,10 @@
-import { TournamentPlayersModel } from "../../../domain/models/tournament-player";
+import { TournamentPlayerModel } from "../../../domain/models/tournament-player";
 import { FindAllTournamentPlayers } from "../../../domain/usecases/find-all-tournament-players";
 import { ServerError } from "../../errors/server-error";
 import { ok, serverError } from "../../helpers/http/http-helper";
 import { FindAllTournamentPlayersController } from "./find-all-tournament-players";
 
-const makeFakeTournamentPlayers = (): TournamentPlayersModel[] => [
+const makeFakeTournamentPlayers = (): TournamentPlayerModel[] => [
   {
     id: 1,
     player: {
@@ -41,7 +41,7 @@ const makeFakeTournamentPlayers = (): TournamentPlayersModel[] => [
 
 const makeFindAllTournamentPlayers = (): FindAllTournamentPlayers => {
   class FindAllTournamentPlayersStub implements FindAllTournamentPlayers {
-    async findAll(): Promise<TournamentPlayersModel[]> {
+    async findAll(): Promise<TournamentPlayerModel[]> {
       const fakeTournamentPlayers = makeFakeTournamentPlayers();
 
       return new Promise((resolve) => resolve(fakeTournamentPlayers));
