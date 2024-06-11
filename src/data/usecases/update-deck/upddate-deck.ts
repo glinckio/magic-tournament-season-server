@@ -2,7 +2,7 @@ import {
   UpdateDeck,
   UpdateDeckModel,
 } from "../../../domain/usecases/update-deck";
-import { Deck } from "../../../infra/db/typeorm/db/entities/deck.entity";
+import { Deck } from "../../../infra/db/typeorm/db/entities/deck-entity";
 import { DeckRepository } from "../../protocols/db/deck-repository";
 
 export class DbUpdateDeck implements UpdateDeck {
