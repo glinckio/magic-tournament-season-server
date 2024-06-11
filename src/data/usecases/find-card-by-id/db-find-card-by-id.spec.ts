@@ -35,25 +35,25 @@ const makeCardRepository = (): CardRepository => {
 
 interface SutTypes {
   sut: DbFindCardByIdTournaments;
-  playerRepository: CardRepository;
+  cardRepository: CardRepository;
 }
 
 const makeSut = (): SutTypes => {
-  const playerRepository = makeCardRepository();
-  const sut = new DbFindCardByIdTournaments(playerRepository);
+  const cardRepository = makeCardRepository();
+  const sut = new DbFindCardByIdTournaments(cardRepository);
 
   return {
     sut,
-    playerRepository,
+    cardRepository,
   };
 };
 
 describe("DbFindCardByIdTournaments", () => {
   it("should throws of DbFindCardByIdTournaments throws", async () => {
     const id = 1;
-    const { playerRepository, sut } = makeSut();
+    const { cardRepository, sut } = makeSut();
     jest
-      .spyOn(playerRepository, "findById")
+      .spyOn(cardRepository, "findById")
       .mockReturnValueOnce(
         new Promise((resolve, reject) => reject(new Error()))
       );
@@ -61,11 +61,11 @@ describe("DbFindCardByIdTournaments", () => {
     const promise = sut.findById(id);
     await expect(promise).rejects.toThrow();
   });
-  it("should return players on success", async () => {
+  it("should return cards on success", async () => {
     const id = 1;
-    const { playerRepository, sut } = makeSut();
+    const { cardRepository, sut } = makeSut();
     jest
-      .spyOn(playerRepository, "findById")
+      .spyOn(cardRepository, "findById")
       .mockReturnValueOnce(
         new Promise((resolve, reject) => resolve(makeFakeCard()))
       );
