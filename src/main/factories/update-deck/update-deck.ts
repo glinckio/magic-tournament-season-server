@@ -1,4 +1,4 @@
-import { DbUpdateDeck } from "../../../data/usecases/update-deck/upddate-deck";
+import { DbUpdateDeck } from "../../../data/usecases/update-deck/db-upddate-deck";
 import { DeckTypeOrmRepository } from "../../../infra/db/typeorm/deck-repository/deck";
 import { UpdateDeckController } from "../../../presentation/controllers/update-deck/update-deck";
 import { Controller } from "../../../presentation/protocols/controller";
