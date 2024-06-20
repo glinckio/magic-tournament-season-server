@@ -8,7 +8,7 @@ import { ValidationComposite } from "../../../presentation/helpers/validators/va
 
 export const makeUpdatePlayerValidation = (): ValidationComposite => {
   const validations: Validation[] = [];
-  for (const field of ["id", "name", "cpf", "email"]) {
+  for (const field of ["id", "cpf", "email"]) {
     validations.push(new RequiredFieldsValidation(field));
   }
   validations.push(new EmailValidation("email", new EmailValidatorAdapter()));

@@ -42,14 +42,14 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
   }
 
   async update(player: UpdatePlayerModel): Promise<Player> {
-    const { id, cpf, email, name, role } = player;
+    const { id, ...rest } = player;
     const playerRepository = AppDataSource.getRepository(Player);
+    const currentData = await this.findByCpf(rest.cpf);
+
     const data = await playerRepository.save({
       id,
-      cpf,
-      email,
-      name,
-      role,
+      ...currentData,
+      ...rest,
     });
 
     return data;
