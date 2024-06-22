@@ -80,6 +80,12 @@ export class PlayerTypeOrmRepository implements PlayerRepository {
     return null;
   }
 
+  async findById(id: number): Promise<Player> {
+    const playerRepository = AppDataSource.getRepository(Player);
+    const data = await playerRepository.findOneBy({ id });
+    return data;
+  }
+
   async findByCpf(cpf: string): Promise<Player> {
     const playerRepository = AppDataSource.getRepository(Player);
     const data = await playerRepository.findOneBy({ cpf });

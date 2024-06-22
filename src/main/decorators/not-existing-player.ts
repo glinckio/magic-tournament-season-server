@@ -11,7 +11,14 @@ export class NotExistingPlayerValidator implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     const { cpf } = httpRequest.body;
-    const isPlayerExists = await this.playerTypeOrmRepository.findByCpf(cpf);
+    const { id } = httpRequest.params;
+    let isPlayerExists;
+
+    if (cpf) {
+      isPlayerExists = await this.playerTypeOrmRepository.findByCpf(cpf);
+    } else {
+      isPlayerExists = await this.playerTypeOrmRepository.findById(id);
+    }
 
     if (!isPlayerExists) {
       return dataNotFound("Player");
